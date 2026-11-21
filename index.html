@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+<meta name="theme-color" content="#070812">
+<title>ГИПЕРГАМИЯ — мини-игра</title>
+<link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;700;900&family=Manrope:wght@400;500;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body data-screen="landing">
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="i-play" viewBox="0 0 24 24"><path d="M8 5v14l11-7z" fill="currentColor"/></symbol>
+    <symbol id="i-pause" viewBox="0 0 24 24"><path d="M7 5h4v14H7zM13 5h4v14h-4z" fill="currentColor"/></symbol>
+    <symbol id="i-heart" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" fill="currentColor"/></symbol>
+    <symbol id="i-star" viewBox="0 0 24 24"><path d="M12 2l2.9 6.26 6.6.7-4.9 4.5 1.35 6.54L12 16.9 6.05 20l1.35-6.54-4.9-4.5 6.6-.7L12 2z" fill="currentColor"/></symbol>
+    <symbol id="i-sound" viewBox="0 0 24 24"><path d="M4 9v6h4l5 4V5L8 9H4z" fill="currentColor"/><path d="M16.5 8.5a5 5 0 0 1 0 7M19 6a8.5 8.5 0 0 1 0 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></symbol>
+    <symbol id="i-mute" viewBox="0 0 24 24"><path d="M4 9v6h4l5 4V5L8 9H4z" fill="currentColor"/><path d="M16 9l6 6M22 9l-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></symbol>
+    <symbol id="i-left" viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-right" viewBox="0 0 24 24"><path d="M9 5l7 7-7 7" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-up" viewBox="0 0 24 24"><path d="M5 15l7-7 7 7" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-restart" viewBox="0 0 24 24"><path d="M12 5V2L7 6l5 4V7a5 5 0 1 1-5 5H5a7 7 0 1 0 7-7z" fill="currentColor"/></symbol>
+    <symbol id="i-home" viewBox="0 0 24 24"><path d="M12 3l9 8h-3v9h-5v-6h-2v6H6v-9H3z" fill="currentColor"/></symbol>
+    <symbol id="i-portal" viewBox="0 0 24 24"><ellipse cx="12" cy="12" rx="6.5" ry="9.5" fill="none" stroke="currentColor" stroke-width="2"/><ellipse cx="12" cy="12" rx="2.6" ry="5" fill="none" stroke="currentColor" stroke-width="1.6" opacity=".7"/></symbol>
+    <symbol id="i-spark" viewBox="0 0 24 24"><path d="M12 2l2 8 8 2-8 2-2 8-2-8-8-2 8-2 2-8z" fill="currentColor"/></symbol>
+    <symbol id="i-move" viewBox="0 0 24 24"><path d="M7 8l-4 4 4 4M17 8l4 4-4 4M3 12h18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-flag" viewBox="0 0 24 24"><path d="M6 3v18h2v-7h9l-2-4 2-4H8V3z" fill="currentColor"/></symbol>
+    <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="2"/><path d="M12 7v5l3.5 2" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></symbol>
+    <symbol id="i-keys" viewBox="0 0 24 24"><path d="M7 8h10a5 5 0 0 1 5 5v3a3 3 0 0 1-5.4 1.8L15 16H9l-1.6 1.8A3 3 0 0 1 2 16v-3a5 5 0 0 1 5-5z" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M7 11v4M5 13h4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><circle cx="16" cy="12" r="1.1" fill="currentColor"/><circle cx="18.5" cy="14" r="1.1" fill="currentColor"/></symbol>
+    <symbol id="i-logo" viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="8" stroke="currentColor" stroke-width="1.8"/><circle cx="12" cy="4" r="1.7" fill="currentColor"/><rect x="5" y="8" width="14" height="11" rx="4.5" fill="currentColor"/><rect x="8" y="11" width="2.6" height="4.4" rx="1.3" fill="#0a0d1f"/><rect x="13.4" y="11" width="2.6" height="4.4" rx="1.3" fill="#0a0d1f"/></symbol>
+  </defs>
+</svg>
+
+<canvas id="bg-canvas" aria-hidden="true"></canvas>
+<div id="cursor-glow" aria-hidden="true"></div>
+<div class="grain" aria-hidden="true"></div>
+
+<header id="topbar">
+  <a class="brand" href="#hero" aria-label="Гипергамия — на главную">
+    <span class="brand-mark"><svg><use href="#i-logo"/></svg></span>
+    <span class="brand-word">ГИПЕРГАМИЯ</span>
+  </a>
+  <nav class="topnav" aria-label="Разделы">
+    <a href="#guide" data-nav="guide">Как играть</a>
+    <a href="#about" data-nav="about">Об игре</a>
+  </nav>
+  <div class="top-actions">
+    <button class="icon-btn" data-sound-toggle aria-pressed="true" aria-label="Выключить звук">
+      <svg class="ic-on"><use href="#i-sound"/></svg><svg class="ic-off"><use href="#i-mute"/></svg>
+    </button>
+    <span class="age-badge" title="Возрастной рейтинг">3+</span>
+    <button class="btn btn-primary btn-sm" id="topbar-play"><svg><use href="#i-play"/></svg>ИГРАТЬ</button>
+  </div>
+</header>
+
+<main id="screen-landing" class="screen entered" aria-label="Главная страница">
+  <section id="hero">
+    <div class="hero-copy">
+      <div class="ready-pill stagger" style="--d:0" id="ready-pill"><span class="dot"></span><span id="ready-text">ЗАГРУЗКА ЯДРА…</span></div>
+      <h1 class="hero-title stagger" style="--d:1">ГИПЕРГАМИЯ</h1>
+      <p class="hero-lead stagger" style="--d:2">Маленький робот. Большое небо. Один портал.</p>
+      <p class="hero-sub stagger" style="--d:3">Мини-платформер на пару минут: собери звёзды, перепрыгни колючие кристаллы и дойди до светящегося портала. Три жизни — и ни одной лишней.</p>
+      <div class="hero-cta stagger" style="--d:4">
+        <button class="btn btn-primary btn-big pulse-ring" id="hero-start"><svg><use href="#i-play"/></svg>НАЧАТЬ ИГРУ</button>
+        <button class="btn btn-ghost btn-big" id="hero-controls"><svg><use href="#i-keys"/></svg>КАК ИГРАТЬ</button>
+      </div>
+      <div class="hero-meta stagger" style="--d:5">
+        <span class="chip chip-mint">Возрастной рейтинг: 3+</span>
+        <span class="chip">Без установки</span>
+        <span class="chip">≈ 2 минуты</span>
+        <span class="chip chip-gold"><svg><use href="#i-star"/></svg><span id="hero-stars">12</span> звёзд</span>
+      </div>
+    </div>
+    <div class="hero-stage stagger" style="--d:3">
+      <div class="stage-float">
+        <div id="stage-tilt">
+          <div class="stage-card" id="stage-card">
+            <span class="corner c-tl"></span><span class="corner c-br"></span>
+            <div class="stage-canvas-wrap"><canvas id="hero-canvas" role="img" aria-label="Живая сцена из игры: робот на парящем острове, звёзды и портал"></canvas></div>
+            <div class="stage-caption">
+              <span class="live"><span class="live-dot"></span>LIVE · Уровень 1 — Небесные острова</span>
+              <span class="stage-tech">60 FPS · Canvas</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="guide">
+    <p class="eyebrow reveal">КАК ИГРАТЬ</p>
+    <h2 class="reveal" style="--d:1">Три шага до портала</h2>
+    <div class="guide-grid">
+      <article class="glass-card guide-card reveal" style="--d:1">
+        <span class="guide-ic ic-violet"><svg><use href="#i-move"/></svg></span>
+        <h3>Двигайся и прыгай</h3>
+        <p>Бег влево-вправо и мягкие прыжки между парящими островами. Физика прощает ошибки: есть «койот-тайм» и буфер прыжка.</p>
+        <div class="kbd-row"><kbd>A</kbd><kbd>D</kbd><span>или</span><kbd>←</kbd><kbd>→</kbd><span>·</span><kbd>SPACE</kbd><span>прыжок</span></div>
+      </article>
+      <article class="glass-card guide-card reveal" style="--d:2">
+        <span class="guide-ic ic-gold"><svg><use href="#i-star"/></svg></span>
+        <h3>Собирай звёзды</h3>
+        <p>12 звёзд спрятаны над островами и прямо над кристаллами. Собирать все не обязательно — но рекорд ждёт самых любопытных.</p>
+        <div class="kbd-row"><kbd>W</kbd><span>или</span><kbd>SPACE</kbd><span>· на телефоне — кнопка</span><kbd>⬆</kbd></div>
+      </article>
+      <article class="glass-card guide-card reveal" style="--d:3">
+        <span class="guide-ic ic-blue"><svg><use href="#i-portal"/></svg></span>
+        <h3>Дойди до портала</h3>
+        <p>Финиш — светящееся кольцо в конце уровня. Просто войди в него. Кристаллы и падения отнимают жизни: их всего три.</p>
+        <div class="kbd-row"><kbd>ESC</kbd><span>пауза</span><span>·</span><kbd>M</kbd><span>звук</span></div>
+      </article>
+    </div>
+    <div class="teaser glass-card reveal" style="--d:2">
+      <div class="teaser-copy">
+        <p class="eyebrow eyebrow-red">ОСОБЫЙ ЭКРАН</p>
+        <p>Если три жизни закончатся, проигравших ждёт <b>Строгая диаграмма Hypergamy</b> и пугающий звук помех. Наведи курсор, чтобы подсмотреть.</p>
+      </div>
+      <button class="btn btn-danger" id="teaser-play"><svg><use href="#i-spark"/></svg>ПРИНЯТЬ ВЫЗОВ</button>
+    </div>
+  </section>
+
+  <footer id="about">
+    <div class="about-inner reveal">
+      <h3>О проекте</h3>
+      <p>ГИПЕРГАМИЯ — крошечный инди-платформер на чистом HTML5 Canvas и Web Audio: без движков, серверов и регистрации. Весь мир — от робота до портала — нарисован кодом прямо в браузере, а звук синтезируется на лету.</p>
+      <div class="hero-meta">
+        <span class="chip">HTML5 Canvas</span><span class="chip">Web Audio</span><span class="chip">60 FPS</span><span class="chip chip-mint">3+</span>
+      </div>
+      <p class="copyright">© 2026 ГИПЕРГАМИЯ · Сделано с ♥ и requestAnimationFrame</p>
+    </div>
+  </footer>
+</main>
+
+<section id="screen-menu" class="screen fixed-screen" hidden aria-label="Игровое меню">
+  <div class="menu-panel glass-card">
+    <p class="eyebrow stagger" style="--d:0">УРОВЕНЬ 1 · НЕБЕСНЫЕ ОСТРОВА</p>
+    <h2 class="menu-title stagger" style="--d:1">ГИПЕРГАМИЯ</h2>
+    <p class="menu-sub stagger" style="--d:2">Доберись до портала в конце уровня. Собери звёзды по пути и береги три жизни.</p>
+    <div class="menu-grid">
+      <div class="menu-block stagger" style="--d:3">
+        <h4><svg><use href="#i-keys"/></svg>УПРАВЛЕНИЕ</h4>
+        <div class="ctrl-row"><span class="kbd-row"><kbd>A</kbd><kbd>D</kbd><span>/</span><kbd>←</kbd><kbd>→</kbd></span><span>движение</span></div>
+        <div class="ctrl-row"><span class="kbd-row"><kbd>SPACE</kbd><span>/</span><kbd>W</kbd></span><span>прыжок</span></div>
+        <div class="ctrl-row"><span class="kbd-row"><kbd>ESC</kbd></span><span>пауза</span></div>
+        <div class="ctrl-row"><span class="kbd-row"><kbd>M</kbd></span><span>звук вкл/выкл</span></div>
+        <p class="menu-note">На телефоне появятся экранные кнопки ◀ ▶ и ⬆.</p>
+      </div>
+      <div class="menu-block stagger" style="--d:4">
+        <h4><svg><use href="#i-flag"/></svg>ЗАДАЧА</h4>
+        <div class="mission-row"><svg class="m-blue"><use href="#i-portal"/></svg><span>Дойди до портала — это финиш уровня</span></div>
+        <div class="mission-row"><svg class="m-gold"><use href="#i-star"/></svg><span>Собери <b id="mission-stars">12</b> звёзд (по желанию)</span></div>
+        <div class="mission-row"><svg class="m-pink"><use href="#i-heart"/></svg><span>У тебя 3 жизни — береги их</span></div>
+        <div class="difficulty">
+          <span>СЛОЖНОСТЬ</span>
+          <span class="meter"><i class="on"></i><i></i><i></i></span>
+          <b class="diff-label">ЛЁГКАЯ</b>
+        </div>
+        <div class="record-chip" id="record-chip" hidden><svg><use href="#i-spark"/></svg><span id="record-text"></span></div>
+      </div>
+    </div>
+    <div class="menu-actions stagger" style="--d:5">
+      <button class="btn btn-primary btn-big btn-wide pulse-ring" id="menu-play"><svg><use href="#i-play"/></svg>ИГРАТЬ</button>
+      <button class="switch-row" data-sound-toggle aria-pressed="true" aria-label="Выключить звук">
+        <span>ЗВУК</span><span class="switch"><i></i></span><b id="sound-state">ВКЛ</b>
+      </button>
+      <button class="btn btn-ghost" id="menu-back"><svg><use href="#i-left"/></svg>НА ГЛАВНУЮ</button>
+    </div>
+    <p class="menu-foot stagger" style="--d:6">Возрастной рейтинг: 3+ · Без установки и регистрации</p>
+  </div>
+</section>
+
+<section id="screen-game" class="screen fixed-screen" hidden aria-label="Игра">
+  <canvas id="game-canvas" role="img" aria-label="Игровой уровень: парящие острова, звёзды и портал"></canvas>
+  <div id="hud">
+    <div class="hud-chip" id="life-chip" aria-label="Жизни">
+      <span id="hearts">
+        <svg class="heart"><use href="#i-heart"/></svg><svg class="heart"><use href="#i-heart"/></svg><svg class="heart"><use href="#i-heart"/></svg>
+      </span>
+    </div>
+    <div class="hud-chip hud-gold" id="star-chip" aria-label="Звёзды">
+      <svg><use href="#i-star"/></svg><b id="star-count">0</b><span class="hud-dim">/ <span id="star-total">12</span></span>
+    </div>
+    <div class="hud-chip hud-prog" id="prog-chip" aria-label="Прогресс уровня">
+      <svg class="prog-flag"><use href="#i-flag"/></svg>
+      <span class="prog-bar"><i class="prog-fill"></i><i class="prog-dot"></i></span>
+      <span class="prog-pct" id="prog-pct">0%</span>
+    </div>
+    <button class="icon-btn hud-btn" id="btn-pause" aria-label="Пауза"><svg><use href="#i-pause"/></svg></button>
+    <button class="icon-btn hud-btn" data-sound-toggle aria-pressed="true" aria-label="Выключить звук">
+      <svg class="ic-on"><use href="#i-sound"/></svg><svg class="ic-off"><use href="#i-mute"/></svg>
+    </button>
+  </div>
+  <div id="tutorial-toast">Доберись до светящегося портала в конце уровня →</div>
+  <div id="touch-controls" aria-hidden="false">
+    <div class="tc-left">
+      <button class="tc-btn" id="touch-left" aria-label="Двигаться влево"><svg><use href="#i-left"/></svg></button>
+      <button class="tc-btn" id="touch-right" aria-label="Двигаться вправо"><svg><use href="#i-right"/></svg></button>
+    </div>
+    <button class="tc-btn tc-jump" id="touch-jump" aria-label="Прыжок"><svg><use href="#i-up"/></svg></button>
+  </div>
+  <div id="countdown" hidden><span id="cd-num">3</span></div>
+  <div id="overlay-pause" class="in-overlay" hidden role="dialog" aria-modal="true" aria-label="Пауза">
+    <div class="pause-card glass-card">
+      <h2>ПАУЗА</h2>
+      <p>Мир подождёт. Робот — тоже.</p>
+      <button class="btn btn-primary btn-wide" id="pause-resume"><svg><use href="#i-play"/></svg>ПРОДОЛЖИТЬ</button>
+      <button class="btn btn-ghost btn-wide" id="pause-restart"><svg><use href="#i-restart"/></svg>НАЧАТЬ ЗАНОВО</button>
+      <button class="btn btn-ghost btn-wide" id="pause-menu"><svg><use href="#i-home"/></svg>ВЫЙТИ В МЕНЮ</button>
+      <p class="pause-hint"><kbd>ESC</kbd> — продолжить</p>
+    </div>
+  </div>
+</section>
+
+<section id="screen-victory" class="fixed-screen overlay-screen" hidden role="dialog" aria-modal="true" aria-label="Победа">
+  <div class="victory-bg" aria-hidden="true"></div>
+  <div class="rays" aria-hidden="true"></div>
+  <div id="sparkles" aria-hidden="true"></div>
+  <div class="v-card glass-card">
+    <p class="eyebrow eyebrow-gold">ПОРТАЛ АКТИВИРОВАН</p>
+    <h2 class="v-title">УРОВЕНЬ ПРОЙДЕН!</h2>
+    <p class="v-sub">Робот дома. Небо аплодирует.</p>
+    <div class="v-stats">
+      <div class="v-stat"><svg class="m-gold"><use href="#i-star"/></svg><b><span id="v-stars">0</span><span class="v-dim"> / <span id="v-total">12</span></span></b><span>ЗВЁЗДЫ</span></div>
+      <div class="v-stat"><svg class="m-blue"><use href="#i-clock"/></svg><b id="v-time">0:00</b><span>ВРЕМЯ</span></div>
+    </div>
+    <div class="v-record" id="v-record" hidden><svg><use href="#i-spark"/></svg>НОВЫЙ РЕКОРД!</div>
+    <div class="v-actions">
+      <button class="btn btn-gold btn-big" id="v-again"><svg><use href="#i-restart"/></svg>ИГРАТЬ ЕЩЁ РАЗ</button>
+      <button class="btn btn-ghost btn-big" id="v-menu"><svg><use href="#i-home"/></svg>В ГЛАВНОЕ МЕНЮ</button>
+    </div>
+  </div>
+</section>
+
+<!-- ПЕРЕДЕЛАННЫЙ ЭКРАН ПОРАЖЕНИЯ -->
+<section id="screen-defeat" class="fixed-screen overlay-screen" hidden role="dialog" aria-modal="true" aria-label="Поражение">
+  <div class="defeat-bg-dark" aria-hidden="true"></div>
+  
+  <div class="defeat-content-wrapper">
+    <!-- Контейнер для картинки -->
+    <div class="diagram-container slam-effect">
+      <img src="assets/hypergamya-diagram.png" alt="Hypergamy Diagram" class="defeat-image">
+    </div>
+    
+    <h2 class="defeat-glitch-text glitch" data-text="СИСТЕМНЫЙ ОТКАЗ">СИСТЕМНЫЙ ОТКАЗ</h2>
+    <p class="defeat-subtext">Три жизни потрачены. Статус: Settling.</p>
+    
+    <div class="defeat-actions">
+      <button class="btn btn-danger btn-big" id="d-retry"><svg><use href="#i-restart"/></svg>ПОПРОБОВАТЬ СНОВА</button>
+      <button class="btn btn-ghost btn-big" id="d-menu"><svg><use href="#i-home"/></svg>ВЫЙТИ</button>
+    </div>
+  </div>
+  
+  <!-- Эффект вспышки при появлении -->
+  <i class="defeat-flash" aria-hidden="true"></i>
+</section>
+
+<div id="veil" aria-hidden="true"></div>
+<noscript><div class="noscript">Для игры нужен включённый JavaScript.</div></noscript>
+
+<script src="game.js"></script>
+<script src="script.js"></script>
+</body>
+</html>
